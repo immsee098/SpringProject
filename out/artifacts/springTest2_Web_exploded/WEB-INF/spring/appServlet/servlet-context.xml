@@ -3,6 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:beans="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
          http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
@@ -16,5 +17,16 @@
         <property name="suffix" value=".jsp" />
     </bean>
 
+    <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <beans:property name="defaultEncoding" value="utf-8"></beans:property>
+        <beans:property name="maxUploadSize" value="104857560"></beans:property>
+        <beans:property name="maxUploadSizePerFile" value="2097152"></beans:property>
+        <beans:property name="uploadTempDir" value="file:/Users/yhs/IdeaProjects/springTest2/src/main/webapp/WEB-INF/upload/temp">
+        </beans:property>
+        <beans:property name="maxInMemorySize" value="10485756"></beans:property>
+    </beans:bean>
+
     <context:component-scan base-package="org.zerock.controller" />
+
+    <context:component-scan base-package="org.zerock.exception" />
 </beans>
